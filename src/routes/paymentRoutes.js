@@ -71,7 +71,6 @@ router.post('/process-payment', async (req, res) => {
       return res.status(400).json({ error: 'This order has no balance due.' });
     }
 
-    // Charge via Authorize.net
     let paymentResult;
     if (paymentMethod === 'cc') {
       paymentResult = await authnet.chargeCreditCard(totalDue, paymentDetails, orderNumber);

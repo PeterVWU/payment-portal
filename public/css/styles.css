@@ -131,6 +131,17 @@ button[type="submit"]:disabled {
   color: #15803d;
 }
 
+/* Order info banner */
+.order-info {
+  background: #f0f7ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  color: #1e40af;
+}
+
 /* Order summary table */
 table {
   width: 100%;
@@ -158,10 +169,14 @@ th, td {
   padding: 8px 10px;
   text-align: left;
   border-bottom: 1px solid #e5e5e5;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
+
+/* Column widths */
+th:nth-child(1), td:nth-child(1) { width: 36%; }                                          /* Item - wraps */
+th:nth-child(2), td:nth-child(2) { width: 20%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } /* SKU - ellipsis */
+th:nth-child(3), td:nth-child(3) { width: 10%; text-align: center; }                       /* Qty */
+th:nth-child(4), td:nth-child(4) { width: 17%; text-align: right; }                        /* Price */
+th:nth-child(5), td:nth-child(5) { width: 17%; text-align: right; }                        /* Total */
 
 th {
   background: #f9fafb;
@@ -203,6 +218,48 @@ tfoot td {
   border-color: #4a90d9;
 }
 
+/* Field validation states */
+.field-error {
+  display: block;
+  color: #dc2626;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  min-height: 1.2em;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.input-error {
+  border-color: #dc2626 !important;
+}
+
+.input-error:focus {
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2) !important;
+}
+
+.input-valid {
+  border-color: #16a34a !important;
+}
+
+.input-valid:focus {
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2) !important;
+}
+
+/* Card type indicator */
+.card-type {
+  font-weight: normal;
+  font-size: 0.85rem;
+  color: #666;
+  margin-left: 8px;
+}
+
+.card-type.visa { color: #1a1f71; }
+.card-type.mastercard { color: #eb001b; }
+.card-type.amex { color: #006fcf; }
+.card-type.discover { color: #ff6000; }
+
 @media (max-width: 480px) {
   .container {
     margin: 16px;
@@ -216,5 +273,30 @@ tfoot td {
 
   .form-group.half {
     flex: none;
+  }
+
+  /* Mobile: hide line items, show only total */
+  table thead,
+  table tbody { display: none; }
+
+  table tfoot {
+    display: block;
+  }
+
+  table tfoot tr {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  table tfoot td {
+    width: auto !important;
+    text-align: left !important;
+    border: none;
+  }
+
+  table tfoot td:last-child {
+    text-align: right !important;
   }
 }

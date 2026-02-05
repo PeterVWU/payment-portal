@@ -30,6 +30,7 @@
     <!-- Step 2: Payment -->
     <div id="step-pay" hidden>
       <h2>Order Summary</h2>
+      <div id="order-info" class="order-info"></div>
       <table id="order-summary">
         <thead>
           <tr>
@@ -52,24 +53,27 @@
       <h2>Payment Details</h2>
       <div class="payment-tabs">
         <button class="tab-btn active" data-method="cc">Credit Card</button>
-        <button class="tab-btn" data-method="ach">ACH / eCheck</button>
+        <button class="tab-btn" data-method="ach" hidden>ACH / eCheck</button>
       </div>
 
       <form id="payment-form">
         <!-- Credit Card Fields -->
         <div id="cc-fields">
           <div class="form-group">
-            <label for="cardNumber">Card Number</label>
-            <input type="text" id="cardNumber" name="cardNumber" placeholder="4111111111111111" maxlength="16" inputmode="numeric">
+            <label for="cardNumber">Card Number <span id="card-type" class="card-type"></span></label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="4111 1111 1111 1111" maxlength="19" inputmode="numeric" autocomplete="cc-number">
+            <span id="cardNumber-error" class="field-error"></span>
           </div>
           <div class="form-row">
             <div class="form-group half">
               <label for="expDate">Expiration (MM/YY)</label>
-              <input type="text" id="expDate" name="expDate" placeholder="MM/YY" maxlength="5">
+              <input type="text" id="expDate" name="expDate" placeholder="MM/YY" maxlength="5" inputmode="numeric" autocomplete="cc-exp">
+              <span id="expDate-error" class="field-error"></span>
             </div>
             <div class="form-group half">
               <label for="cvv">CVV</label>
-              <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4" inputmode="numeric">
+              <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4" inputmode="numeric" autocomplete="cc-csc">
+              <span id="cvv-error" class="field-error"></span>
             </div>
           </div>
         </div>
@@ -109,8 +113,6 @@
       <div class="success-box">
         <h2>Payment Successful</h2>
         <p>Your payment has been processed.</p>
-        <p>Transaction ID: <strong id="txn-id"></strong></p>
-        <p>Please save this for your records.</p>
       </div>
       <button id="new-lookup-btn" class="link-btn">Pay another order</button>
     </div>
