@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log*
+.env
+.git
+.gitignore
+.playwright-mcp
+*.png
+doc
+CLAUDE.md
+overview.md
+README.md
