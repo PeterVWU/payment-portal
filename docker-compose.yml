@@ -2,7 +2,7 @@ services:
   payment-portal:
     build: .
     ports:
-      - "${PORT:-3000}:3000"
+      - "${PORT:-3003}:3000"
     env_file:
       - .env
     restart: unless-stopped
